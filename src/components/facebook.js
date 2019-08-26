@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import { Container, Row, Col, Card, CardHeader, CardBody, Button } from "shards-react";
 import PageTitle from "./common/PageTitle";
-import Popup from 'react-popup';
 import FacebookLogin from 'react-facebook-login';
 import axios from 'axios';
 
@@ -34,7 +33,9 @@ state = {
 responseFacebook = response =>
 {
   if (response.status!="unknown"){
-    console.log(response);
+
+    sessionStorage.setItem('username', response.name);
+
     this.setState({
       isLoggedIn:true,
       userID:response.userID,
